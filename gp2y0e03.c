@@ -4,8 +4,8 @@
  
 int main(void){
   int fd = wiringPiI2CSetup(0x40);
-  int upper = 0;  // 上位8ビット(11～4)
-  int lower = 0;  // 下位4ビット(3～0)
+  int upper = 0;  // Upper 8 bit(11～4)
+  int lower = 0;  // Lower 4 bit(3～0)
   int value = 0;
   int count = 0;
   while(count < 100){
@@ -13,7 +13,7 @@ int main(void){
     lower = wiringPiI2CReadReg8(fd, 0x5F);
     value = upper << 4 | lower;
     printf("%d(%x)\n", value, value);
-    delay(1000);  // 1000ミリ秒待機
+    delay(1000);  // wait for 1sec
     count++; 
   }
   return 0;
