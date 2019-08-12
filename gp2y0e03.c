@@ -20,7 +20,6 @@ int main(){
     printf("%d(%x)\n", value, value);
     delay(1000);  // wait for 1sec
     count++; 
-    
   };
   return 0; 
   
