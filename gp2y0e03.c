@@ -7,20 +7,12 @@
 int main(){
 	
   int fd = wiringPiI2CSetup(0x40);
-  int upper = 0;  // Upper 8 bit(11～4)
-  int lower = 0;  // Lower 4 bit(3～0)
-  int value = 0;
-  int count = 0;
+  int dat;
   
-  while(count < 100){
-	  
-    upper = wiringPiI2CReadReg8(fd, 0x5E);
-    lower = wiringPiI2CReadReg8(fd, 0x5F);
-    value = upper << 4 | lower;
-    printf("%d(%x)\n", value, value);
+  while(1){
+    dat = wiringPiI2CReadReg8(fd, 0x5E) << 4 | wiringPiI2CReadReg8(fd, 0x5F);
+    printf("%d(%x)\n", dat, dat);
     delay(1000);  // wait for 1sec
-    count++; 
   };
-  return 0; 
-  
+    
 }
